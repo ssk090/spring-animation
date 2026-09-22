@@ -1,0 +1,106 @@
+#root {
+  min-height: 100svh;
+}
+
+.appShell {
+  position: relative;
+  min-height: 100svh;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 50% 32%, rgba(255, 255, 255, 0.92), transparent 34%),
+    linear-gradient(180deg, #f8f1ff 0%, #fff7eb 100%);
+}
+
+.headline {
+  position: absolute;
+  left: 50%;
+  top: 26%;
+  transform: translate(-50%, -50%);
+  z-index: 3;
+  margin: 0;
+  width: min(760px, 90vw);
+  text-align: center;
+  color: #21152d;
+  font-size: clamp(30px, 5.4vw, 64px);
+  line-height: 1;
+  letter-spacing: -0.05em;
+  pointer-events: none;
+}
+
+.searchWrap {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 3;
+  width: min(680px, 90vw);
+}
+
+.emojiStage {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.emoji {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 58px;
+  height: 58px;
+  margin: -29px 0 0 -29px;
+  display: grid;
+  place-items: center;
+  font-size: 44px;
+  line-height: 1;
+  filter: drop-shadow(0 10px 16px rgba(68, 31, 99, 0.18));
+  user-select: none;
+  will-change: transform;
+}
+
+.emoji.selected {
+  z-index: 2;
+  filter: drop-shadow(0 0 16px rgba(154, 92, 255, 0.55));
+}
+
+.searchBar {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px;
+  border: 1px solid rgba(33, 21, 45, 0.12);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.86);
+  box-shadow: 0 24px 70px rgba(68, 31, 99, 0.18);
+  backdrop-filter: blur(16px);
+}
+
+.searchBar input {
+  flex: 1;
+  min-width: 0;
+  border: 0;
+  background: transparent;
+  padding: 14px 20px;
+  color: #21152d;
+  font: inherit;
+  outline: none;
+}
+
+.searchBar button {
+  width: 40px;
+  height: 40px;
+  border: 0;
+  border-radius: 50%;
+  background: #21152d;
+  color: #fff;
+  font-size: 24px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.loading {
+  padding-right: 14px;
+  color: #9a5cff;
+  font-size: 14px;
+}
