@@ -6,12 +6,12 @@ export default defineConfig({
   plugins: [react()],
   server: {
     // The TypeSafe API sends no CORS headers, so the browser cannot call it
-    // directly. Proxy /v1 through the dev server and the SDK uses a relative
-    // baseURL. ponytail: dev-only, a real deployment needs its own proxy.
+    // directly. In production api/v1/[...path].ts proxies it; here Vite does.
     proxy: {
-      '/v1': {
+      '/api/v1': {
         target: 'https://api.typesafe.ai',
         changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/api/, ''),
       },
     },
   },

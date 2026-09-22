@@ -4,9 +4,11 @@ import type { EmojiOption } from '../types'
 
 const apiKey = import.meta.env.VITE_TYPESAFE_API_KEY as string | undefined
 
-// baseURL '' keeps requests on our own origin so Vite can proxy them to
-// https://api.typesafe.ai (see vite.config.ts). The API has no CORS headers.
-const client = apiKey ? new TypeSafeClient({ apiKey, baseURL: '', dangerouslyAllowBrowser: true }) : null
+// baseURL '/api' keeps requests same-origin. Vite proxies /api/v1 in dev and
+// api/v1/[...path].ts proxies it on Vercel; the API has no CORS headers.
+const client = apiKey
+  ? new TypeSafeClient({ apiKey, baseURL: '/api', dangerouslyAllowBrowser: true })
+  : null
 
 if (!client) {
   console.warn('No VITE_TYPESAFE_API_KEY set, falling back to keyword matching.')
